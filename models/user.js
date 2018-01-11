@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../db');
 
-const Users = sequelize.define('users', {
+const User = sequelize.define('user', {
     firstName: {
         type: Sequelize.STRING
     },
@@ -10,4 +10,9 @@ const Users = sequelize.define('users', {
     }
 });
 
-module.exports = Users;
+User.sync()
+    .then(() => {
+        console.log('User table created')
+    })
+
+module.exports = User;
