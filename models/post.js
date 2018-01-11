@@ -6,24 +6,16 @@ const Post = sequelize.define('post', {
     title: {
         type: Sequelize.STRING
     },
-    date: {
-        type: Sequelize.DATEONLY
-    },
     content: {
         type: Sequelize.TEXT
-    },
-    user_id: {
-        type: Sequelize.INTEGER,
-        references: {
-            model: User,
-            key: 'id'
-        }
     }
 });
 
+Post.belongsTo(User);
+
 Post.sync()
     .then(() => {
-        console.log('Post table created')
-    });
+        console.log('Created Post table')
+        });
 
 module.exports = Post;
