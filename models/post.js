@@ -13,9 +13,9 @@ const Post = sequelize.define('post', {
 
 Post.belongsTo(User);
 
-Post.sync()
-    .then(() => {
-        console.log('Created Post table')
-        });
+// Post.sync()
+//     .then(() => {
+//         console.log('Created Post table')
+//         });
 
 module.exports = Post;

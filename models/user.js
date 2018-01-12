@@ -10,12 +10,9 @@ const User = sequelize.define('user', {
     }
 });
 
-User.sync()
-    .then(() => {
-        return User.create({
-            firstname: 'Seth',
-            lastname: 'Zimmerman'
-        });
-    });
+// User.sync()
+//     .then(() => {
+//         console.log('Created user table')
+//     });
 
 module.exports = User;
