@@ -19,13 +19,13 @@ const Comment = require('./models/comment');
 
 // User.findOne({
 //     where: {
-//         lastname: 'Zimmerman'
+//         lastname: 'Pascoe'
 //     }
 // }).then(author => {
 //     Post
 //     .create({
-//         title: 'Post by Seth YAY',
-//         content: 'Seth is writing this post hell yeah!'
+//         title: 'Post by Devin SWEET',
+//         content: 'Dev is writing this post hooray!!!'
 //     })
 //     .then(post => {
 //         post.setUser(author);
@@ -33,12 +33,12 @@ const Comment = require('./models/comment');
 //     });
 // });
 
-Post.findOne({
-    where: {
-        postId: 1
-    }
-}).then(post => {
-    Comment.create({
-        content: "This is a comment on a post!"
-    });
-});
+// Post.findOne({
+//     where: {
+//         postId: 1
+//     }
+// }).then(post => {
+//     Comment.create({
+//         content: "This is a comment on a post!"
+//     });
+// });
