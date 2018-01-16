@@ -1,0 +1,10 @@
+<h1 class="text-center">Blog List</h1>
+
+<a href="/blog/new">Write new post</a><br>
+{{#each posts}}
+<div>
+    <h2>{{title}}</h2>
+    <p>{{content}}</p>
+    <a href="/blog/{{id}}">Continue reading</a>
+</div>
+{{/each}}
