@@ -19,7 +19,11 @@ router.route('/blog')
             });
     })
     .delete((req, res) => {
-        res.send('Delete')
+        // Post.destroy({
+        //     where: {
+
+        //     }
+        // })
     });
 
 module.exports = router;

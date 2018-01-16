@@ -7,6 +7,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 const posts = require('./routes/posts')
 
+const expressHbs = require('express-handlebars');
+
+app.engine('.hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs'}));
+app.set('view engine', '.hbs');
+
+app.get('/work', (req, res) => {
+    res.render('home', {
+        title: 'yay it worked'
+    });
+});
+
 app.use(express.static('public'));
 
 app.use(posts);
