@@ -14,6 +14,7 @@ app.post('/', (req, res) => {
 
 // vv route vv
 app.get('/', (req, res) => {
+    console.log('In the main route!')
     // vv route handler vv
     Post.findOne( {
         where: {
