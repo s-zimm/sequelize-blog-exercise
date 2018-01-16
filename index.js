@@ -3,6 +3,7 @@ const app = express();
 // const Post = require('./models/post');
 
 const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
 
 const posts = require('./routes/posts')
 
