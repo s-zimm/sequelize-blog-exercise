@@ -52,15 +52,16 @@ router.route('/blog/new')
 router.route('/blog/:id/edit')
     .get((req, res) => {
        Post.findOne({
-           where: {
-            id: req.params.id
-           }
+            where: {
+                id: req.params.id
+            }
        }).then(result => {
+           console.log(result);
            res.render('post-edit', {
                title: result.title,
                content: result.content
            });
-       })
+       });
     })
 
 router.route('/blog/:id')
@@ -72,7 +73,8 @@ router.route('/blog/:id')
         }).then(result => {
             res.render('blog-single', {
                 title: result.title,
-                content: result.content
+                content: result.content,
+                id: result.id
             });
         }); 
     })
