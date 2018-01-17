@@ -1,5 +1,5 @@
 <h1>Edit Post</h1>
-<form action="/blog" method="PUT">
+<form action="/blog/{{id}}/edit" method="POST">
     <div class="form-group">
         <label for="blog-title">Title</label>
         <input name="title" type="text" class="form-control" id="blog-title" value="{{title}}">

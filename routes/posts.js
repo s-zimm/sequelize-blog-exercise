@@ -25,7 +25,7 @@ router.route('/blog')
                     }
                     return {
                         title: p.title,
-                        content: p.content.substring(0, 15) + '...',
+                        content: p.content.substring(0, 500) + '...',
                         id: p.id
                     }
                 });
@@ -56,12 +56,34 @@ router.route('/blog/:id/edit')
                 id: req.params.id
             }
        }).then(result => {
-           console.log(result);
-           res.render('post-edit', {
+            console.log(result);
+            res.render('post-edit', {
                title: result.title,
-               content: result.content
-           });
-       });
+               content: result.content,
+               id: result.id
+            })
+            // return result.save({
+            //     fields: ['title', 'content']
+            // });
+        });
+    })
+    .post((req, res) => {
+        Post.findOne({
+            where: {
+                id: req.params.id
+            }
+        }).then(result => {
+            result.update({
+                title: req.body.title,
+                content: req.body.content
+            }
+            ).then(updated => {
+                res.render(`post-success`, {
+                    title: updated.title,
+                    content: updated.content
+                });
+            })
+        })
     })
 
 router.route('/blog/:id')
