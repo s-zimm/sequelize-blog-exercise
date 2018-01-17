@@ -16,9 +16,13 @@ router.route('/blog')
         });
     })
     .get((req, res) => {
-        Post.findAll()
+        Post.findAll({
+            order: [
+                ['createdAt', 'DESC']
+            ]
+        })
             .then((allPosts) => {
-    
+                console.log(allPosts)
                 const posties = allPosts.map(p => {
                     if (p.content === null) {
                         p.content = 'No content found';
@@ -61,10 +65,7 @@ router.route('/blog/:id/edit')
                title: result.title,
                content: result.content,
                id: result.id
-            })
-            // return result.save({
-            //     fields: ['title', 'content']
-            // });
+            });
         });
     })
     .post((req, res) => {
@@ -83,6 +84,31 @@ router.route('/blog/:id/edit')
                     content: updated.content
                 });
             })
+        })
+    })
+
+router.route('/blog/:id/delete')
+    .get((req, res) => {
+        Post.findOne({
+            where: {
+                id: req.params.id
+            }
+        }).then(result => {
+            res.render('post-delete', {
+                title: result.title,
+                content: result.content,
+                id: result.id
+            })
+        })
+    })
+    .post((req, res) => {
+        Post.findOne({
+            where: {
+                id: req.params.id
+            }
+        }).then(result => {
+            result.destroy();
+            res.render('delete-success', {})
         })
     })
 
